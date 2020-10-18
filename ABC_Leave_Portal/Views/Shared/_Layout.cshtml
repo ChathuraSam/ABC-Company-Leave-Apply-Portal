@@ -1,0 +1,63 @@
+﻿@*styles - https://materializecss.com/color.html*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ABC Company Employee Leave Applicatipon Portal</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/materialize.min.js"></script>
+</head>
+<body>
+
+
+
+
+    <nav>
+        <div class="nav-wrapper">
+
+            @Html.ActionLink("ABC Leave Apply Portal", "Index", "Home", null, new { @class = "brand-logo" })
+
+            @Html.ActionLink("ABC Leave Apply Portal", "Index", "Home", null, new { @class = "sidenav-trigger material-icons" })
+
+            <ul class="right hide-on-med-and-down">
+                <li>@Html.ActionLink("Apply Leave", "LeaveApply")</li>
+                <li>@Html.ActionLink("Approve Leave", "LeaveApprove")</li>
+                <li>@Html.ActionLink("Sign Out", "SignOut")</li>
+                <li>@Html.ActionLink("Login", "Login")</li>
+
+
+                @if (@HttpContext.Current.User.Identity.Name != "")
+                {
+                    <li class="pink darken-4">Welcome @HttpContext.Current.User.Identity.Name</li>
+                }
+                else
+                {
+                    <li>Welcome Guest User</li>
+                }
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+    </ul>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ABC Company Leave Apply Online Portal</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ABC_Leave_Portal.Models.LeaveEntry>
+
+@{
+    ViewBag.Title = "LeaveApprove";
+}
+
+<h2>Leave Approve</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee1.EmployeeCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee1.EmployeeName)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.LeaveTypeCode.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentsEmployee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentsApprover)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutoNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee1.EmployeeCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee1.EmployeeName)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.LeaveTypeCode.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentsEmployee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentsApprover)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AutoNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Approve", "approve", new { @empId = item.EmployeeCode, @leaveTypeId = item.LeaveTypeId, @reqDate = item.RequestedDate }) |
+            @Html.ActionLink("Reject", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Comment", "Details", new { /* id=item.PrimaryKey */ }) |
+        </td>
+    </tr>
+}
+
+</table>
