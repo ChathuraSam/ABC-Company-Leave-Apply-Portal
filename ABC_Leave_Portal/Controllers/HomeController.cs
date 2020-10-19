@@ -82,7 +82,7 @@ namespace ABC_Leave_Portal.Controllers
         public ActionResult LeaveApprove()
         {
             // have to display all leave applications for this Employee ID as the supervisor ID
-            List<LeaveEntry> leaveEntries = context.LeaveEntries.ToList();
+            List<LeaveEntry> leaveEntries = context.LeaveEntries.Where(x => x.Employee1.SupervisorCode == System.Web.HttpContext.Current.User.Identity.Name).ToList();
             return View(leaveEntries);
         }
 
