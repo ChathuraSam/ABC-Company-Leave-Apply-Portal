@@ -145,6 +145,10 @@
     <Compile Include="Migrations\202010180204341_date format change.Designer.cs">
       <DependentUpon>202010180204341_date format change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010181807191_editable false.cs" />
+    <Compile Include="Migrations\202010181807191_editable false.Designer.cs">
+      <DependentUpon>202010181807191_editable false.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\LeaveAllocation.cs" />
@@ -193,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010180204341_date format change.resx">
       <DependentUpon>202010180204341_date format change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010181807191_editable false.resx">
+      <DependentUpon>202010181807191_editable false.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

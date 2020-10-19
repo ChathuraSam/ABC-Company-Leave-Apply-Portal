@@ -74,9 +74,11 @@ namespace ABC_Leave_Portal.Controllers
             ViewBag.empId = "";
             ViewBag.isAuthenticated = false;
             FormsAuthentication.SignOut();
+            Session.Abandon();
             return RedirectToAction("Login");
         }
 
+        [Authorize]
         public ActionResult LeaveApprove()
         {
             // have to display all leave applications for this Employee ID as the supervisor ID
@@ -84,9 +86,10 @@ namespace ABC_Leave_Portal.Controllers
             return View(leaveEntries);
         }
 
-
+        [Authorize]
         public ActionResult LeaveApply()
         {
+            ViewBag.empID = ViewBag.empId;
             return View();
         }
 
@@ -94,6 +97,8 @@ namespace ABC_Leave_Portal.Controllers
         [HttpPost]
         public ActionResult LeaveApply(LeaveEntry leaveEntry)
         {
+
+            
 
             if (isValidateLeave())
             {
@@ -108,18 +113,20 @@ namespace ABC_Leave_Portal.Controllers
                     catch (Exception e)
                     {
                         Console.Write("Error when entering the data" + e.Message);
+                        ModelState.AddModelError("", "Can't make your request. May be you have get all the leaves which are applicable 1");
                     }
                     return RedirectToAction("LeaveApply");
                 }
                 else
                 {
+                    ModelState.AddModelError("", "Can't make your request. May be you have get all the leaves which are applicable 2");
                     return View();
                 }
 
             }
             else
             {
-                ModelState.AddModelError("", "Can't make your request. May be you have get all the leaves which are applicable");
+                ModelState.AddModelError("", "Can't make your request. May be you have get all the leaves which are applicable 3");
                 return View();
             }
 
@@ -137,7 +144,7 @@ namespace ABC_Leave_Portal.Controllers
             return validate;
         }
 
-
+        [Authorize]
         public ActionResult approve(string empId, string leaveTypeId, DateTime reqDate)
         {
             LeaveEntry lEntry = context.LeaveEntries.Where(x => x.EmployeeCode == empId && x.LeaveTypeId == leaveTypeId && x.RequestedDate == reqDate).SingleOrDefault();
@@ -146,6 +153,7 @@ namespace ABC_Leave_Portal.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public ActionResult approve(string empId, string leaveTypeId, DateTime reqDate, LeaveEntry leaveEntry)
         {
             LeaveEntry lEntry = context.LeaveEntries.Where(x => x.EmployeeCode == empId && x.LeaveTypeId == leaveTypeId && x.RequestedDate == reqDate).SingleOrDefault();

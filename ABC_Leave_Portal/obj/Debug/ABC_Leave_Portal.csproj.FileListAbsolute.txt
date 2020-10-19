@@ -29,3 +29,4 @@ C:\Users\Chathura\Documents\Visual Studio 2013\Projects\ABC_Leave_Portal\ABC_Lea
 C:\Users\Chathura\Documents\Visual Studio 2013\Projects\ABC_Leave_Portal\ABC_Leave_Portal\obj\Debug\ABC_Leave_Portal.Migrations.changereadonly.resources
 C:\Users\Chathura\Documents\Visual Studio 2013\Projects\ABC_Leave_Portal\ABC_Leave_Portal\obj\Debug\ABC_Leave_Portal.csprojResolveAssemblyReference.cache
 C:\Users\Chathura\Documents\Visual Studio 2013\Projects\ABC_Leave_Portal\ABC_Leave_Portal\obj\Debug\ABC_Leave_Portal.Migrations.dateformatchange.resources
+C:\Users\Chathura\Documents\Visual Studio 2013\Projects\ABC_Leave_Portal\ABC_Leave_Portal\obj\Debug\ABC_Leave_Portal.Migrations.editablefalse.resources

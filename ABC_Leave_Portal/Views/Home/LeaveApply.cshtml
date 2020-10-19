@@ -23,8 +23,9 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.EmployeeCode, "Employee Code", new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-
-                            @Html.EditorFor(model => model.EmployeeCode, new { @readonly = "readonly" })
+                            
+                            @Html.EditorFor(model => model.EmployeeCode, new { disabled = "disabled", @readonly = "readonly", @Value = @HttpContext.Current.User.Identity.Name })
+                            @*@Html.TextBoxFor(model => model.EmployeeCode, new { disabled = "disabled", @readonly = "readonly", @Value = @HttpContext.Current.User.Identity.Name })*@
                             @Html.ValidationMessageFor(model => model.EmployeeCode)
                         </div>
                     </div>

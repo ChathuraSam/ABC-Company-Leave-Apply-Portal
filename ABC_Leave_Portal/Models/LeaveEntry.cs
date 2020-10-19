@@ -12,6 +12,7 @@ namespace ABC_Leave_Portal.Models
         //Assumtion I made here, A particular employee cannot request same type of leave within the same date
 
         [Key, Column(Order = 0)]
+        [Editable(false)]
         [Required(ErrorMessage = "Employee Code is required.")]
         public string EmployeeCode { get; set; }
 
