@@ -98,14 +98,19 @@ namespace ABC_Leave_Portal.Controllers
         public ActionResult LeaveApply(LeaveEntry leaveEntry)
         {
 
-            
 
-            if (isValidateLeave())
+
+            if (isValidateLeave(leaveEntry.EmployeeCode, leaveEntry.LeaveTypeCode.ToString()))
             {
                 if (ModelState.IsValid)
                 {
                     try
                     {
+
+                        LeaveAllocation leaveAllocation = context.LeaveAlloations.Where(x => x.EmployeeID == leaveEntry.EmployeeCode && x.LeaveTypeCode == leaveEntry.LeaveTypeCode).SingleOrDefault();
+                        leaveAllocation.UtilizedAmount += 1;
+                        
+
                         context.LeaveEntries.Add(leaveEntry);
                         context.SaveChanges();
 
@@ -134,12 +139,19 @@ namespace ABC_Leave_Portal.Controllers
 
         }
 
-        public bool isValidateLeave()
+        public bool isValidateLeave(string empCode, string leaveCode)
         {
 
             //check all the fields are filled and ok with the business logic
-            bool validate = true;
+            bool validate = false;
+            LeaveAllocation leaveAllocation = context.LeaveAlloations.Where(x => x.EmployeeID == empCode && x.LeaveTypeCode.ToString() == leaveCode).SingleOrDefault();
 
+            if (leaveAllocation.UtilizedAmount < leaveAllocation.EntitledAmount){
+                //all the leaves has been get
+                validate = true;
+                
+            }
+            
 
             return validate;
         }
